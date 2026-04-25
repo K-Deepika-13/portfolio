@@ -1521,13 +1521,15 @@
 
         if (response.ok) {
           document.body.classList.add('no-scroll');
-          // Fire Confetti!
-          confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: ['#800000', '#a52a2a', '#ffccd5']
-          });
+          // Safety check: only fire if the library loaded correctly
+          if (typeof confetti === 'function') {
+            confetti({
+              particleCount: 150,
+              spread: 70,
+              origin: { y: 0.6 },
+              colors: ['#800000', '#a52a2a', '#ffccd5']
+            });
+          }
           successModal.classList.add('active');
           contactForm.reset();
           // Automatically close modal after 5 seconds
