@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DEEPIKA K | Portfolio</title>
+<meta name="description" content="Portfolio of DEEPIKA K, a B.Tech IT Student specializing in Web Development and IoT. Explore my projects and certifications.">
 
 <!-- LinkedIn & Social Sharing Meta Tags -->
 <meta property="og:title" content="DEEPIKA K | Portfolio">
@@ -13,6 +14,9 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Confetti Library for the "Success" moment -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <style>
   :root {
     --bg: #fffdfd;
@@ -67,7 +71,7 @@
     width: 0%;
     height: 4px;
     background: linear-gradient(to right, var(--accent1), var(--accent2));
-    z-index: 10001; /* Stays above the nav */
+    z-index: 10002; /* Ensures it stays above the nav and custom cursor */
     transition: width 0.2s ease;
   }
 
@@ -930,7 +934,7 @@
       <div class="about-avatar-wrap">
         <div class="about-avatar-bg"></div>
         <div class="about-avatar-inner">
-          <img src="profile.jpg.jpg" alt="DEEPIKA K">
+          <img src="profile.jpg.jpg" alt="DEEPIKA K" loading="lazy">
         </div>
       </div>
     </div>
@@ -1385,7 +1389,7 @@
   <div class="success-modal">
     <span class="success-icon">💌</span>
     <h3 class="modal-title">Message Sent!</h3>
-    <p class="modal-text">Thank you! Your message has been received. I will get back to you as soon as possible!</p>
+    <p class="modal-text">Thank you! Your message has reached <strong>DEEPIKA K</strong>. I'll get back to you very soon.</p>
     <button onclick="closeModal()" class="btn-primary">Back to Portfolio</button>
   </div>
 </div>
@@ -1517,6 +1521,13 @@
 
         if (response.ok) {
           document.body.classList.add('no-scroll');
+          // Fire Confetti!
+          confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#800000', '#a52a2a', '#ffccd5']
+          });
           successModal.classList.add('active');
           contactForm.reset();
           // Automatically close modal after 5 seconds
